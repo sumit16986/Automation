@@ -1,0 +1,54 @@
+{
+	"variables": [],
+	"info": {
+		"name": " StripeAPI",
+		"_postman_id": "e26f8303-2503-7d6e-ecff-303bcc2718db",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "accessStripeApiWithoutLoggingIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"pm.test(\"CHEKE STATUSS CODE IS 200\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"ManualTestCase\", function () {",
+							"    pm.response.to.have.status(\"Unauthorized\");",
+							"});",
+							"",
+							"pm.test(\"CHEKE RESPONCE TIME IS LESS THAN 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"CHEKE BODY MATCHES STRING\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"invalid_request_error\");",
+							"});",
+							"",
+							"",
+							"var time= new Date();",
+							"console.log(time);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://api.stripe.com/v1/charges",
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
